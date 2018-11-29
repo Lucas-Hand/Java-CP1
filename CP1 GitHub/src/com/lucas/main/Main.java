@@ -10,8 +10,8 @@ public class Main {
 	//Payroll Calculator
 	
 	static String iString, iFirstName, iLastName, oPay;
-	static int iHours;
-	static double iRate, cPay;
+	static int cHours;
+	static double cRate, cPay;
 	static Scanner myScanner;
 	static NumberFormat nf;
 	
@@ -41,17 +41,30 @@ public class Main {
 		System.out.print("Enter last name: ");
 		iLastName = myScanner.next();
 		
-		System.out.print("Enter hours: ");
-		iString = myScanner.next();
-		iHours = Integer.parseInt(iString);
+		try {
+			System.out.print("Enter hours: ");
+			iString = myScanner.next();
+			cHours = Integer.parseInt(iString);
+		}
+		catch (Exception e) {
+			System.out.println("Hours must be a whole number, defaulted to 0");
+			cHours = 0;
+		}
 		
-		System.out.print("Enter rate: ");
-		iString = myScanner.next();
-		iRate = Double.parseDouble(iString);
+		try {
+			System.out.print("Enter rate: ");
+			iString = myScanner.next();
+			cRate = Double.parseDouble(iString);
+		}
+		catch (Exception e) {
+			System.out.println("Rate must be a decimal number, defaulted to 0");
+			cRate = 0;
+		}
+
 	}
 	
 	public static void calcs() {
-		cPay = iHours * iRate;
+		cPay = cHours * cRate;
 	}
 	
 	public static void output() {
